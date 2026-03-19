@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graffiti Street Art Text Generator | Urban Clothing & Hip-Hop Brand Design Tool | GlamorousGrammyGlowUp</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --secondary: #312E81;
+            --accent: #F59E0B;
+            --accent-soft: #f8e7b0;
+            --neural-midnight: #0b1020;
+            --text-primary: #ffffff;
+            --text-muted: #b8c0d9;
+            --panel-bg: #131c33;
+            --panel-deep: #0f172a;
+            --border-color: #2d3b66;
+            color-scheme: dark;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--neural-midnight) 0%, #151f3d 55%, #231942 100%);
+            color: var(--text-primary);
+            padding: 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 95%;
+            margin: 0 auto;
+            background: rgba(10, 18, 38, 0.96);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(79, 70, 229, 0.18);
+            border: 1px solid rgba(245, 158, 11, 0.22);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--accent) 0%, #fff1b8 18%, var(--primary) 70%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            font-size: 1.1em;
+        }
+
+        .how-to-box {
+            margin-bottom: 28px;
+            padding: 24px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.18), rgba(245, 158, 11, 0.10));
+            border: 1px solid rgba(245, 158, 11, 0.28);
+            box-shadow: 0 6px 24px rgba(79, 70, 229, 0.16);
+        }
+
+        .how-to-box h2,
+        .examples-box h2 {
+            color: var(--accent);
+            font-size: 1.35em;
+            margin-bottom: 12px;
+        }
+
+        .how-to-box p,
+        .examples-box p {
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .how-to-steps {
+            display: grid;
+            gap: 12px;
+        }
+
+        .how-step {
+            background: rgba(10, 18, 38, 0.55);
+            border: 1px solid rgba(79, 70, 229, 0.22);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .how-step strong {
+            color: #ffffff;
+        }
+
+        .tip-box,
+        .pdf-box {
+            margin-top: 14px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: rgba(245, 158, 11, 0.10);
+            border: 1px solid rgba(245, 158, 11, 0.28);
+            color: var(--accent-soft);
+        }
+
+        .examples-box {
+            margin-bottom: 28px;
+            padding: 24px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(13, 19, 40, 0.96), rgba(22, 33, 67, 0.92));
+            border: 1px solid rgba(79, 70, 229, 0.26);
+            box-shadow: 0 6px 24px rgba(79, 70, 229, 0.12);
+        }
+
+        .example-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .example-card {
+            background: rgba(8, 14, 30, 0.72);
+            border: 1px solid rgba(245, 158, 11, 0.18);
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .example-card h3 {
+            color: #ffffff;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .example-card .use-case {
+            color: var(--accent-soft);
+            font-size: 0.95em;
+            margin-bottom: 14px;
+        }
+
+        .recipe-block {
+            margin-top: 12px;
+            padding: 14px;
+            border-radius: 12px;
+            background: rgba(19, 28, 51, 0.92);
+            border: 1px solid rgba(45, 59, 102, 0.95);
+        }
+
+        .recipe-block strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .recipe-block ol {
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+
+        .recipe-block li {
+            margin-bottom: 8px;
+        }
+
+        .recipe-text {
+            color: var(--text-muted);
+            font-size: 0.96em;
+        }
+
+        details {
+            margin-bottom: 20px;
+            background: var(--panel-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        details[open] {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.10);
+        }
+
+        summary {
+            cursor: pointer;
+            padding: 20px 24px;
+            font-size: 1.2em;
+            font-weight: 600;
+            background: rgba(79, 70, 229, 0.10);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            user-select: none;
+            list-style: none;
+        }
+
+        summary:hover {
+            background: rgba(245, 158, 11, 0.08);
+            padding-left: 28px;
+        }
+
+        summary::before {
+            content: "▶ ";
+            color: var(--accent);
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .details-content {
+            padding: 24px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .field-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .lock-btn {
+            min-width: 85px;
+            padding: 0 16px;
+            height: 48px;
+            border-radius: 8px;
+            background: rgba(79, 70, 229, 0.28);
+            color: #eef2ff;
+            border: 1px solid rgba(129, 140, 248, 0.65);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        .lock-btn.locked {
+            background: rgba(245, 158, 11, 0.22);
+            border-color: var(--accent);
+            color: #ffe6a7;
+        }
+
+        .lock-btn:hover {
+            background: rgba(255, 255, 255, 0.10);
+            transform: scale(1.03);
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--accent);
+            font-size: 0.95em;
+        }
+
+        select, .custom-input {
+            padding: 14px 18px;
+            height: 48px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: #182443;
+            color: #ffffff;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            flex-grow: 1;
+            width: 100%;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        select option {
+            background-color: #182443 !important;
+            color: #ffffff !important;
+            padding: 8px !important;
+        }
+
+        select option:hover,
+        select option:focus,
+        select option:checked {
+            background-color: var(--primary) !important;
+            color: #ffffff !important;
+        }
+
+        select:focus, .custom-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.12);
+        }
+
+        select:hover, .custom-input:hover {
+            border-color: rgba(245, 158, 11, 0.5);
+        }
+
+        select.has-value {
+            border-color: var(--accent);
+            background-color: rgba(245, 158, 11, 0.06);
+        }
+
+        .custom-section {
+            margin-top: 24px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.20);
+            border-radius: 12px;
+            border: 1px dashed var(--border-color);
+        }
+
+        .control-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin: 32px 0;
+        }
+
+        button {
+            padding: 16px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        button:nth-child(1) {
+            background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
+            color: #ffffff;
+        }
+
+        button:nth-child(2) {
+            background: linear-gradient(135deg, var(--accent) 0%, #fbbf24 100%);
+            color: #1f2937;
+        }
+
+        button:nth-child(3) {
+            background: rgba(37, 99, 235, 0.92);
+            color: var(--text-primary);
+        }
+
+        button:nth-child(4) {
+            background: rgba(71, 85, 105, 0.82);
+            color: var(--text-primary);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.28);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        #output {
+            margin-top: 24px;
+            padding: 24px;
+            background: rgba(9, 15, 31, 0.96);
+            border: 2px solid rgba(245, 158, 11, 0.28);
+            border-radius: 12px;
+            min-height: 120px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #e2e8f0;
+            resize: vertical;
+            width: 100%;
+        }
+
+        .status-line {
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin-top: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .warning {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .control-bar {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="main-app">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 2px solid var(--border-color);">
+                <div style="font-family: Impact, sans-serif; font-size: 1.4em; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">
+                    GlamorousGrammyGlowUp
+                </div>
+                <div style="font-size: 0.95em; color: var(--text-muted); font-style: italic;">
+                    Digital Products That Slay
+                </div>
+            </div>
+
+            <h1>Generate Raw Graffiti Text Art for Your Brand</h1>
+            <p class="subtitle">Bold graffiti vibes with Glam energy, royal blue confidence, and gold-level shine</p>
+
+            <div class="how-to-box">
+                <h2>✨ How to Use This Generator</h2>
+                <p>Use this tool to build a graffiti-style prompt, then test it in ChatGPT and/or Gemini to see which image result you like best.</p>
+
+                <div class="how-to-steps">
+                    <div class="how-step">
+                        <strong>Step 1:</strong> Pick your dropdown options for style, surface, paint effects, lighting, signature style, and color blend.
+                    </div>
+                    <div class="how-step">
+                        <strong>Step 2:</strong> Add extra direction in the custom text boxes to tell the AI exactly what vibe, brand name, or details you want.
+                    </div>
+                    <div class="how-step">
+                        <strong>Step 3:</strong> If you don’t know what to type in the custom boxes, go to <strong>ChatGPT</strong> and ask for ideas for your creative direction and must-have elements.
+                    </div>
+                    <div class="how-step">
+                        <strong>Step 4:</strong> Click <strong>Generate Prompt</strong>, then copy the finished prompt.
+                    </div>
+                    <div class="how-step">
+                        <strong>Step 5:</strong> Paste the prompt into <strong>ChatGPT and/or Gemini</strong> to generate your images.
+                    </div>
+                    <div class="how-step">
+                        <strong>Step 6:</strong> Compare both results and keep the one you like best. One might give you cleaner text, while the other might give you a crazier street-art vibe.
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Quick tip:</strong> Put your brand name, color vibe, mood, and must-have details in the custom boxes. Example: <em>royal blue and gold graffiti wall, luxury streetwear energy, chrome shine, bold brand name, upscale urban campaign look.</em>
+                </div>
+            </div>
+
+            <div class="examples-box">
+                <h2>🔥 3 Quick Example Recipes</h2>
+                <p>Use these as fast starting points. Pick the dropdowns listed below, then paste the matching text into the two custom boxes.</p>
+
+                <div class="example-grid">
+                    <div class="example-card">
+                        <h3>1. Digital Products That Slay</h3>
+                        <div class="use-case">Best for: luxury creator brands, promo graphics, digital product shops</div>
+
+                        <div class="recipe-block">
+                            <strong>Select these items:</strong>
+                            <ol>
+                                <li><strong>Spray Paint Style:</strong> Smooth bubble letters with chrome reflection effects, soft halos, and elegant color gradients in cool palettes</li>
+                                <li><strong>Street Surface & Decay:</strong> Pristine white concrete wall offering clean canvas for bold geometric graffiti designs and color saturation</li>
+                                <li><strong>Paint Effects & Dynamics:</strong> Wet paint blending with color mixing zones where overlapping spray creates natural color transitions</li>
+                                <li><strong>Street Art Era & Culture:</strong> Contemporary street art with clean lines, minimalist design, and sophisticated color coordination</li>
+                                <li><strong>Urban Lighting & Atmosphere:</strong> Daylight graffiti with bold outlines, colorful fill, authentic street culture aesthetic</li>
+                                <li><strong>Tag Artist Signature Style:</strong> Signature artist tag with flowing script letters, ornamental flourishes, and gradient color transitions</li>
+                                <li><strong>Color & Blend Technique:</strong> Metallic gold and bronze blend with reflective highlights and subtle shadow layering technique</li>
+                            </ol>
+                        </div>
+
+                        <div class="recipe-block">
+                            <strong>Custom Creative Direction box:</strong>
+                            <div class="recipe-text">Luxury digital creator branding, royal blue and gold palette, polished but bold, feminine boss energy, premium brand presence</div>
+                        </div>
+
+                        <div class="recipe-block">
+                            <strong>Must-Have Elements box:</strong>
+                            <div class="recipe-text">phrase Digital Products That Slay, royal blue, gold metallic shine, glam brand feel, upscale social promo look</div>
+                        </div>
+                    </div>
+
+                    <div class="example-card">
+                        <h3>2. Royal Drip</h3>
+                        <div class="use-case">Best for: streetwear brands, apparel, urban merch, bold fashion launches</div>
+
+                        <div class="recipe-block">
+                            <strong>Select these items:</strong>
+                            <ol>
+                                <li><strong>Spray Paint Style:</strong> Wildstyle graffiti with interlocking letters, complex arrows, and dynamic flowing lines in vibrant neon colors</li>
+                                <li><strong>Street Surface & Decay:</strong> Aged red brick wall with mortar cracks, perfect for vibrant spray paint contrast and urban texture</li>
+                                <li><strong>Paint Effects & Dynamics:</strong> Wet paint blending with color mixing zones where overlapping spray creates natural color transitions</li>
+                                <li><strong>Street Art Era & Culture:</strong> 90s hip-hop golden age piece featuring wildstyle lettering, spray paint texture, and vibrant color blocking</li>
+                                <li><strong>Urban Lighting & Atmosphere:</strong> Neon-lit graffiti text glowing electric blue and pink against dark brick wall at night</li>
+                                <li><strong>Tag Artist Signature Style:</strong> Professional graffiti writer signature with interlocking letters, 3D depth effects, and chrome finish</li>
+                                <li><strong>Color & Blend Technique:</strong> Metallic gold and bronze blend with reflective highlights and subtle shadow layering technique</li>
+                            </ol>
+                        </div>
+
+                        <div class="recipe-block">
+                            <strong>Custom Creative Direction box:</strong>
+                            <div class="recipe-text">Luxury streetwear brand mural, royal blue dominance, premium chrome accents, bold upscale energy, high-end fashion campaign vibe</div>
+                        </div>
+
+                        <div class="recipe-block">
+                            <strong>Must-Have Elements box:</strong>
+                            <div class="recipe-text">brand name Royal Drip, royal blue paint, gold shine, chrome edges, strong wall presence</div>
+                        </div>
+                    </div>
+
+                    <div class="example-card">
+                        <h3>3. Glow Queen Cosmetics</h3>
+                        <div class="use-case">Best for: beauty brands, lip gloss, skincare, feminine glam content</div>
+
+                        <div class="recipe-block">
+                            <strong>Select these items:</strong>
+                            <ol>
+                                <li><strong>Spray Paint Style:</strong> Rounded bubble letters with soft gradients, bubble outlines, and playful pastel color schemes on white backgrounds</li>
+                                <li><strong>Street Surface & Decay:</strong> Freshly painted white wall with slight chalky texture, ideal for vibrant contrasting color graffiti art</li>
+                                <li><strong>Paint Effects & Dynamics:</strong> Overspray feathering creating soft diffused edges with gradual transparency falloff and blended boundaries</li>
+                                <li><strong>Street Art Era & Culture:</strong> Contemporary street art with minimalist approach, geometric elements, and refined color palette</li>
+                                <li><strong>Urban Lighting & Atmosphere:</strong> Daytime street art with natural sunlight, vibrant colors, textured concrete surface</li>
+                                <li><strong>Tag Artist Signature Style:</strong> Signature graffiti with flowing letters, ornamental elements, and smooth color transitions</li>
+                                <li><strong>Color & Blend Technique:</strong> Soft pastel gradient blend combining mint green, peachy pink, and cream with feathered edges</li>
+                            </ol>
+                        </div>
+
+                        <div class="recipe-block">
+                            <strong>Custom Creative Direction box:</strong>
+                            <div class="recipe-text">Luxury beauty brand graffiti, soft glam but bold, polished feminine energy, clean commercial finish, pretty and powerful</div>
+                        </div>
+
+                        <div class="recipe-block">
+                            <strong>Must-Have Elements box:</strong>
+                            <div class="recipe-text">brand name Glow Queen Cosmetics, glossy pastel tones, soft gold shimmer, beauty ad feel, feminine edge</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pdf-box">
+                    <strong>Need more ideas?</strong> Check your bonus PDF for the full extended design recipe pack.
+                </div>
+            </div>
+
+            <details open>
+                <summary>🎨 Spray Paint Style</summary>
+                <div class="details-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Spray Paint Style</label>
+                            <div class="field-row">
+                                <select id="spray_paint_style" data-logic="standard" onchange="applyConditionalLogic(); updateFieldState(this);">
+                                    <option value="">None</option>
+                                    <option value="Advanced wildstyle featuring interconnected characters, elaborate decorative elements, and multi-layered spray paint effects">Advanced wildstyle featuring interconnected characters, elaborate decorative elements, and multi-layered spray paint effects</option>
+                                    <option value="Aggressive throw-up with thick outlines, minimal fill, and high-impact contrast using black and white spray">Aggressive throw-up with thick outlines, minimal fill, and high-impact contrast using black and white spray</option>
+                                    <option value="Architectural blockbuster featuring structured letters, solid fills, and dramatic shadow effects for wall prominence">Architectural blockbuster featuring structured letters, solid fills, and dramatic shadow effects for wall prominence</option>
+                                    <option value="Block letter style with geometric precision, hard shadows, and bold primary color combinations for maximum visibility">Block letter style with geometric precision, hard shadows, and bold primary color combinations for maximum visibility</option>
+                                    <option value="Blockbuster letters with solid fills, clean edges, and high-contrast color schemes suitable for large wall coverage">Blockbuster letters with solid fills, clean edges, and high-contrast color schemes suitable for large wall coverage</option>
+                                    <option value="Bold blockbuster design with thick strokes, high contrast outlines, and vibrant neon color selections">Bold blockbuster design with thick strokes, high contrast outlines, and vibrant neon color selections</option>
+                                    <option value="Bubble letter design with chrome effect, 3D depth shadows, and luminous glow in cool blue tones">Bubble letter design with chrome effect, 3D depth shadows, and luminous glow in cool blue tones</option>
+                                    <option value="Classic bubble letters with thick rounded forms, soft shadows, and pastel color gradients on urban concrete">Classic bubble letters with thick rounded forms, soft shadows, and pastel color gradients on urban concrete</option>
+                                    <option value="Complex wildstyle incorporating hidden letters, interlocking elements, and sophisticated color theory with metallic accents">Complex wildstyle incorporating hidden letters, interlocking elements, and sophisticated color theory with metallic accents</option>
+                                    <option value="Dimensional bubble letters with glossy effects, soft outlines, and elegant pastel color palettes on urban surfaces">Dimensional bubble letters with glossy effects, soft outlines, and elegant pastel color palettes on urban surfaces</option>
+                                    <option value="Dynamic wildstyle incorporating flowing ribbons, integrated arrows, and complex color transitions with spray effects">Dynamic wildstyle incorporating flowing ribbons, integrated arrows, and complex color transitions with spray effects</option>
+                                    <option value="Elaborate wildstyle with character merging, decorative flourishes, and multi-color spray paint layering techniques">Elaborate wildstyle with character merging, decorative flourishes, and multi-color spray paint layering techniques</option>
+                                    <option value="Energetic throw-up with dripping paint, quick strokes, and authentic street artist technique and spontaneity">Energetic throw-up with dripping paint, quick strokes, and authentic street artist technique and spontaneity</option>
+                                    <option value="Experimental wildstyle mixing organic curves with geometric shapes, rainbow gradients, and layered transparency effects">Experimental wildstyle mixing organic curves with geometric shapes, rainbow gradients, and layered transparency effects</option>
+                                    <option value="Fast throw-up technique using dripping paint effects, minimal colors, and spontaneous energetic brush strokes">Fast throw-up technique using dripping paint effects, minimal colors, and spontaneous energetic brush strokes</option>
+                                    <option value="Fat bubble letters with 3D perspective, soft shadows, and warm gradient color schemes on dark backgrounds">Fat bubble letters with 3D perspective, soft shadows, and warm gradient color schemes on dark backgrounds</option>
+                                    <option value="Geometric blockbuster with angular letters, clean fills, and strategic use of complementary color combinations">Geometric blockbuster with angular letters, clean fills, and strategic use of complementary color combinations</option>
+                                    <option value="Industrial blockbuster letters with metallic finishes, angular construction, and bold color blocking techniques">Industrial blockbuster letters with metallic finishes, angular construction, and bold color blocking techniques</option>
+                                    <option value="Intricate wildstyle with character integration, arrow extensions, and complex layering of transparent spray paint colors">Intricate wildstyle with character integration, arrow extensions, and complex layering of transparent spray paint colors</option>
+                                    <option value="Professional blockbuster with clean lines, solid color fills, and strategic shadow placement for architectural impact">Professional blockbuster with clean lines, solid color fills, and strategic shadow placement for architectural impact</option>
+                                    <option value="Puffy bubble letters with dimensional shading, soft color transitions, and decorative star elements throughout design">Puffy bubble letters with dimensional shading, soft color transitions, and decorative star elements throughout design</option>
+                                    <option value="Puffy bubble style with outlined characters, soft internal gradients, and playful multi-color spray applications">Puffy bubble style with outlined characters, soft internal gradients, and playful multi-color spray applications</option>
+                                    <option value="Quick throw-up featuring minimal colors, loose outlines, and authentic spontaneous spray paint application methods">Quick throw-up featuring minimal colors, loose outlines, and authentic spontaneous spray paint application methods</option>
+                                    <option value="Raw throw-up style with visible spray texture, minimal detail, and authentic street art urgency and energy">Raw throw-up style with visible spray texture, minimal detail, and authentic street art urgency and energy</option>
+                                    <option value="Rounded bubble letters with soft gradients, bubble outlines, and playful pastel color schemes on white backgrounds">Rounded bubble letters with soft gradients, bubble outlines, and playful pastel color schemes on white backgrounds</option>
+                                    <option value="Smooth bubble letters with chrome reflection effects, soft halos, and elegant color gradients in cool palettes">Smooth bubble letters with chrome reflection effects, soft halos, and elegant color gradients in cool palettes</option>
+                                    <option value="Sophisticated wildstyle merging calligraphy elements, intricate details, and professional color harmony with metallic spray">Sophisticated wildstyle merging calligraphy elements, intricate details, and professional color harmony with metallic spray</option>
+                                    <option value="Street throw-up featuring quick outlines, rapid fill techniques, and authentic urban decay aesthetic with drips">Street throw-up featuring quick outlines, rapid fill techniques, and authentic urban decay aesthetic with drips</option>
+                                    <option value="Throw-up style with two-color outline and fill, quick energetic strokes, and bold metallic silver accents">Throw-up style with two-color outline and fill, quick energetic strokes, and bold metallic silver accents</option>
+                                    <option value="Wildstyle graffiti with interlocking letters, complex arrows, and dynamic flowing lines in vibrant neon colors">Wildstyle graffiti with interlocking letters, complex arrows, and dynamic flowing lines in vibrant neon colors</option>
+                                </select>
+                                <button type="button" class="lock-btn" onclick="toggleLock('spray_paint_style')" title="Lock this field">UNLOCK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details open>
+                <summary>🧱 Street Surface & Decay</summary>
+                <div class="details-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Street Surface & Decay</label>
+                            <div class="field-row">
+                                <select id="surface_texture" data-logic="standard" onchange="applyConditionalLogic(); updateFieldState(this);">
+                                    <option value="">None</option>
+                                    <option value="Aged red brick wall with mortar cracks, perfect for vibrant spray paint contrast and urban texture">Aged red brick wall with mortar cracks, perfect for vibrant spray paint contrast and urban texture</option>
+                                    <option value="Corrugated metal industrial surface with rust patches, ideal for metallic paint effects and reflective elements">Corrugated metal industrial surface with rust patches, ideal for metallic paint effects and reflective elements</option>
+                                    <option value="Cracked asphalt wall surface with multiple fracture patterns, adding dynamic texture to street art">Cracked asphalt wall surface with multiple fracture patterns, adding dynamic texture to street art</option>
+                                    <option value="Crumbling urban decay wall with exposed plaster, brick, and natural patina for authentic street aesthetic">Crumbling urban decay wall with exposed plaster, brick, and natural patina for authentic street aesthetic</option>
+                                    <option value="Deteriorating painted drywall with water damage stains and mold patterns, authentic abandoned building aesthetic">Deteriorating painted drywall with water damage stains and mold patterns, authentic abandoned building aesthetic</option>
+                                    <option value="Deteriorating stucco wall with large chunks missing, revealing layers of history and urban abandonment">Deteriorating stucco wall with large chunks missing, revealing layers of history and urban abandonment</option>
+                                    <option value="Freshly painted white wall with slight chalky texture, ideal for vibrant contrasting color graffiti art">Freshly painted white wall with slight chalky texture, ideal for vibrant contrasting color graffiti art</option>
+                                    <option value="Glossy tiled surface with reflective properties, creating striking visual effects for modern graffiti designs">Glossy tiled surface with reflective properties, creating striking visual effects for modern graffiti designs</option>
+                                    <option value="Heavily graffitied wall with existing art underneath, layered palimpsest effect for complex visual composition">Heavily graffitied wall with existing art underneath, layered palimpsest effect for complex visual composition</option>
+                                    <option value="Heavily textured brick facade with deep mortar joints, creating shadow play for dimensional graffiti pieces">Heavily textured brick facade with deep mortar joints, creating shadow play for dimensional graffiti pieces</option>
+                                    <option value="Industrial concrete with embedded rebar visible in cracks, creating geometric patterns for street art integration">Industrial concrete with embedded rebar visible in cracks, creating geometric patterns for street art integration</option>
+                                    <option value="Industrial metal shipping container with dents and scratches, providing unique surface for bold tag designs">Industrial metal shipping container with dents and scratches, providing unique surface for bold tag designs</option>
+                                    <option value="Industrial steel beam surface with rust oxidation and factory markings, perfect for edgy urban aesthetic">Industrial steel beam surface with rust oxidation and factory markings, perfect for edgy urban aesthetic</option>
+                                    <option value="Painted metal billboard frame with peeling layers revealing previous advertisements and artistic history">Painted metal billboard frame with peeling layers revealing previous advertisements and artistic history</option>
+                                    <option value="Porous sandstone wall with natural erosion patterns, creating organic texture for integrated graffiti design">Porous sandstone wall with natural erosion patterns, creating organic texture for integrated graffiti design</option>
+                                    <option value="Pristine marble-effect wall with subtle veining, luxurious surface for sophisticated graffiti lettering designs">Pristine marble-effect wall with subtle veining, luxurious surface for sophisticated graffiti lettering designs</option>
+                                    <option value="Pristine white concrete wall offering clean canvas for bold geometric graffiti designs and color saturation">Pristine white concrete wall offering clean canvas for bold geometric graffiti designs and color saturation</option>
+                                    <option value="Raw concrete foundation wall with aggregate stones visible, industrial texture for bold graffiti designs">Raw concrete foundation wall with aggregate stones visible, industrial texture for bold graffiti designs</option>
+                                    <option value="Rough concrete highway underpass with water stains and algae growth, authentic urban decay canvas">Rough concrete highway underpass with water stains and algae growth, authentic urban decay canvas</option>
+                                    <option value="Smooth aluminum composite panel with slight oxidation, modern surface for sleek contemporary graffiti styles">Smooth aluminum composite panel with slight oxidation, modern surface for sleek contemporary graffiti styles</option>
+                                    <option value="Smooth glass storefront window with light reflection, ideal for transparent and layered graffiti effects">Smooth glass storefront window with light reflection, ideal for transparent and layered graffiti effects</option>
+                                    <option value="Smooth granite stone surface with subtle veining, providing elegant backdrop for contemporary graffiti art">Smooth granite stone surface with subtle veining, providing elegant backdrop for contemporary graffiti art</option>
+                                    <option value="Smooth polished concrete underpass with minimal imperfections, perfect for detailed lettering and precision artwork">Smooth polished concrete underpass with minimal imperfections, perfect for detailed lettering and precision artwork</option>
+                                    <option value="Textured vinyl siding with faded color and weathering, creating interesting surface variation for artwork">Textured vinyl siding with faded color and weathering, creating interesting surface variation for artwork</option>
+                                    <option value="Vintage brick wall with uneven surface and century-old mortar joints, perfect for character and depth">Vintage brick wall with uneven surface and century-old mortar joints, perfect for character and depth</option>
+                                    <option value="Vintage painted brick with multiple color layers and historical wear, perfect for nostalgic street art">Vintage painted brick with multiple color layers and historical wear, perfect for nostalgic street art</option>
+                                    <option value="Weathered clay brick with natural color variation and surface irregularities, authentic rustic urban canvas">Weathered clay brick with natural color variation and surface irregularities, authentic rustic urban canvas</option>
+                                    <option value="Weathered concrete surface with peeling paint layers, exposing decades of street art history underneath">Weathered concrete surface with peeling paint layers, exposing decades of street art history underneath</option>
+                                    <option value="Weathered plaster wall with large missing sections and exposed lath, showing authentic decay and character">Weathered plaster wall with large missing sections and exposed lath, showing authentic decay and character</option>
+                                    <option value="Weathered wooden fence with splintered surface and natural grain, adding organic texture to spray paint">Weathered wooden fence with splintered surface and natural grain, adding organic texture to spray paint</option>
+                                </select>
+                                <button type="button" class="lock-btn" onclick="toggleLock('surface_texture')" title="Lock this field">UNLOCK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details open>
+                <summary>💧 Paint Effects & Dynamics</summary>
+                <div class="details-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Paint Effects & Dynamics</label>
+                            <div class="field-row">
+                                <select id="paint_effects" data-logic="standard" onchange="applyConditionalLogic(); updateFieldState(this);">
+                                    <option value="">None</option>
+                                    <option value="Chipped paint edges with sharp fracture lines and realistic surface layer separation details">Chipped paint edges with sharp fracture lines and realistic surface layer separation details</option>
+                                    <option value="Corrosion damage showing chemical weathering with discoloration stains and surface degradation patterns">Corrosion damage showing chemical weathering with discoloration stains and surface degradation patterns</option>
+                                    <option value="Drip acceleration effect simulating fast-moving paint flow with elongated streaks and speed-based distortion">Drip acceleration effect simulating fast-moving paint flow with elongated streaks and speed-based distortion</option>
+                                    <option value="Drip intensity with heavy downward paint flow creating realistic gravity-affected streaks and runs">Drip intensity with heavy downward paint flow creating realistic gravity-affected streaks and runs</option>
+                                    <option value="Drip interruption with paint flow breaks creating segmented streaks and natural pause effects">Drip interruption with paint flow breaks creating segmented streaks and natural pause effects</option>
+                                    <option value="Drip pooling effect at bottom edges creating realistic paint accumulation and surface saturation">Drip pooling effect at bottom edges creating realistic paint accumulation and surface saturation</option>
+                                    <option value="Drip stalactite formation creating hanging paint formations and gravity-defying dried paint structures">Drip stalactite formation creating hanging paint formations and gravity-defying dried paint structures</option>
+                                    <option value="Drip thickness variation creating variable-width paint streams from thick heavy flows to thin trails">Drip thickness variation creating variable-width paint streams from thick heavy flows to thin trails</option>
+                                    <option value="Drip viscosity control affecting paint flow speed and consistency creating varied stream characteristics">Drip viscosity control affecting paint flow speed and consistency creating varied stream characteristics</option>
+                                    <option value="Graffiti aging with faded colors and UV damage creating weathered vintage appearance">Graffiti aging with faded colors and UV damage creating weathered vintage appearance</option>
+                                    <option value="Overspray color shift showing pigment separation and color fringing in atmospheric spray zones">Overspray color shift showing pigment separation and color fringing in atmospheric spray zones</option>
+                                    <option value="Overspray detail with fine mist effect creating soft halos and atmospheric color bleeding around edges">Overspray detail with fine mist effect creating soft halos and atmospheric color bleeding around edges</option>
+                                    <option value="Overspray feathering creating soft diffused edges with gradual transparency falloff and blended boundaries">Overspray feathering creating soft diffused edges with gradual transparency falloff and blended boundaries</option>
+                                    <option value="Overspray gradient fade controlling smooth transitions from solid color to transparent atmospheric mist">Overspray gradient fade controlling smooth transitions from solid color to transparent atmospheric mist</option>
+                                    <option value="Overspray halo intensity controlling atmospheric diffusion and soft-focus color spread beyond main design edges">Overspray halo intensity controlling atmospheric diffusion and soft-focus color spread beyond main design edges</option>
+                                    <option value="Overspray iridescence adding light-reactive color shifts and metallic sheen in spray mist areas">Overspray iridescence adding light-reactive color shifts and metallic sheen in spray mist areas</option>
+                                    <option value="Overspray particle size distribution ranging from fine mist to visible droplet spray patterns">Overspray particle size distribution ranging from fine mist to visible droplet spray patterns</option>
+                                    <option value="Paint chip weathering showing aged surface deterioration with realistic peeling and flaking texture layers">Paint chip weathering showing aged surface deterioration with realistic peeling and flaking texture layers</option>
+                                    <option value="Paint cracking with fine fracture networks and realistic drying stress patterns on surface">Paint cracking with fine fracture networks and realistic drying stress patterns on surface</option>
+                                    <option value="Paint texture roughness with visible brush stroke marks and uneven surface application characteristics">Paint texture roughness with visible brush stroke marks and uneven surface application characteristics</option>
+                                    <option value="Rust bloom effect with orange-brown oxidation stains spreading from underlying metal exposure">Rust bloom effect with orange-brown oxidation stains spreading from underlying metal exposure</option>
+                                    <option value="Splatter asymmetry creating directional bias and wind-affected spray pattern irregularities">Splatter asymmetry creating directional bias and wind-affected spray pattern irregularities</option>
+                                    <option value="Splatter concentration focused on impact zones with dense particle clustering and organic spray patterns">Splatter concentration focused on impact zones with dense particle clustering and organic spray patterns</option>
+                                    <option value="Splatter density gradient transitioning from heavy concentrated spray to light dispersed particles">Splatter density gradient transitioning from heavy concentrated spray to light dispersed particles</option>
+                                    <option value="Splatter dynamics using high-pressure spray technique with varied particle sizes and directional spray patterns">Splatter dynamics using high-pressure spray technique with varied particle sizes and directional spray patterns</option>
+                                    <option value="Splatter impact craters showing paint impact deformation and surface disruption effects">Splatter impact craters showing paint impact deformation and surface disruption effects</option>
+                                    <option value="Splatter randomization producing organic unpredictable spray patterns avoiding repetitive mechanical appearance">Splatter randomization producing organic unpredictable spray patterns avoiding repetitive mechanical appearance</option>
+                                    <option value="Splatter velocity control determining particle speed and impact force creating varied splatter spread">Splatter velocity control determining particle speed and impact force creating varied splatter spread</option>
+                                    <option value="Weathering patina creating aged copper and rust-like oxidation effects on painted surface areas">Weathering patina creating aged copper and rust-like oxidation effects on painted surface areas</option>
+                                    <option value="Wet paint blending with color mixing zones where overlapping spray creates natural color transitions">Wet paint blending with color mixing zones where overlapping spray creates natural color transitions</option>
+                                </select>
+                                <button type="button" class="lock-btn" onclick="toggleLock('paint_effects')" title="Lock this field">UNLOCK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details open>
+                <summary>🎤 Street Art Era & Culture</summary>
+                <div class="details-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Street Art Era & Culture</label>
+                            <div class="field-row">
+                                <select id="street_art_era" data-logic="standard" onchange="applyConditionalLogic(); updateFieldState(this);">
+                                    <option value="">None</option>
+                                    <option value="2000s advanced wildstyle featuring intertwined letters, depth perception, and metallic finishes">2000s advanced wildstyle featuring intertwined letters, depth perception, and metallic finishes</option>
+                                    <option value="2000s advanced wildstyle with intertwined characters, shadow effects, and iridescent color shifts">2000s advanced wildstyle with intertwined characters, shadow effects, and iridescent color shifts</option>
+                                    <option value="2000s complex wildstyle with overlapping characters, arrow accents, and chrome silver effects">2000s complex wildstyle with overlapping characters, arrow accents, and chrome silver effects</option>
+                                    <option value="2000s complex wildstyle with overlapping letters, arrow effects, and chrome gradient fills">2000s complex wildstyle with overlapping letters, arrow effects, and chrome gradient fills</option>
+                                    <option value="2000s wildstyle graffiti with intricate interlocking letters, 3D depth effects, and metallic silver accents">2000s wildstyle graffiti with intricate interlocking letters, 3D depth effects, and metallic silver accents</option>
+                                    <option value="2000s wildstyle masterpiece with extreme letter distortion, 3D effects, and metallic paint simulation">2000s wildstyle masterpiece with extreme letter distortion, 3D effects, and metallic paint simulation</option>
+                                    <option value="2000s wildstyle masterpiece with extreme letter manipulation, shadow effects, and chrome accents">2000s wildstyle masterpiece with extreme letter manipulation, shadow effects, and chrome accents</option>
+                                    <option value="80s classic graffiti with rounded bubble caps, basic fill patterns, and primary color scheme">80s classic graffiti with rounded bubble caps, basic fill patterns, and primary color scheme</option>
+                                    <option value="80s classic graffiti with rounded bubble style, simple colors, and basic 3D effects">80s classic graffiti with rounded bubble style, simple colors, and basic 3D effects</option>
+                                    <option value="80s old-school graffiti with bold bubble letters, chrome effects, and neon outlines on concrete wall">80s old-school graffiti with bold bubble letters, chrome effects, and neon outlines on concrete wall</option>
+                                    <option value="80s retro bombing with puffy letters, basic gradient fills, and classic spray paint aesthetic">80s retro bombing with puffy letters, basic gradient fills, and classic spray paint aesthetic</option>
+                                    <option value="80s retro graffiti bombing style with thick outlines, basic shading, and classic spray paint drips">80s retro graffiti bombing style with thick outlines, basic shading, and classic spray paint drips</option>
+                                    <option value="80s style piece with fat caps, bright neon colors, simple outlines, and spray drips">80s style piece with fat caps, bright neon colors, simple outlines, and spray drips</option>
+                                    <option value="80s style piece with puffy letters, simple arrow caps, and bright neon color combinations">80s style piece with puffy letters, simple arrow caps, and bright neon color combinations</option>
+                                    <option value="80s throwback with simple block letters, thick outlines, basic shadows, and neon highlights">80s throwback with simple block letters, thick outlines, basic shadows, and neon highlights</option>
+                                    <option value="90s golden age hip-hop graffiti with wildstyle letters, authentic texture, and rich color depth">90s golden age hip-hop graffiti with wildstyle letters, authentic texture, and rich color depth</option>
+                                    <option value="90s golden age piece with intricate letter connections, spray texture, and vibrant multi-color layers">90s golden age piece with intricate letter connections, spray texture, and vibrant multi-color layers</option>
+                                    <option value="90s golden era hip-hop tag with fat caps, layered colors, and authentic urban decay background">90s golden era hip-hop tag with fat caps, layered colors, and authentic urban decay background</option>
+                                    <option value="90s golden era piece with intricate letter work, color blocking, and urban wall texture">90s golden era piece with intricate letter work, color blocking, and urban wall texture</option>
+                                    <option value="90s hip-hop era graffiti featuring fat letters, wildstyle complexity, and authentic spray paint feel">90s hip-hop era graffiti featuring fat letters, wildstyle complexity, and authentic spray paint feel</option>
+                                    <option value="90s hip-hop golden age piece featuring wildstyle lettering, spray paint texture, and vibrant color blocking">90s hip-hop golden age piece featuring wildstyle lettering, spray paint texture, and vibrant color blocking</option>
+                                    <option value="90s hip-hop graffiti featuring block letters, wildstyle arrows, and rich jewel-tone paint effects">90s hip-hop graffiti featuring block letters, wildstyle arrows, and rich jewel-tone paint effects</option>
+                                    <option value="90s hip-hop graffiti featuring complex letter arrangements, spray texture, and vibrant hues">90s hip-hop graffiti featuring complex letter arrangements, spray texture, and vibrant hues</option>
+                                    <option value="Contemporary street art with clean lines, minimalist design, and sophisticated color coordination">Contemporary street art with clean lines, minimalist design, and sophisticated color coordination</option>
+                                    <option value="Contemporary street art with minimalist approach, geometric elements, and refined color palette">Contemporary street art with minimalist approach, geometric elements, and refined color palette</option>
+                                    <option value="Contemporary street art with stencil technique, political messaging, and muted earth tone colors">Contemporary street art with stencil technique, political messaging, and muted earth tone colors</option>
+                                    <option value="Modern underground aesthetic with abstract forms, paint splatters, and bold monochromatic colors">Modern underground aesthetic with abstract forms, paint splatters, and bold monochromatic colors</option>
+                                    <option value="Modern underground aesthetic with abstract letterforms, spray paint splatters, and monochromatic scheme">Modern underground aesthetic with abstract letterforms, spray paint splatters, and monochromatic scheme</option>
+                                    <option value="Modern underground street art with minimalist line work, geometric shapes, and contemporary color palette">Modern underground street art with minimalist line work, geometric shapes, and contemporary color palette</option>
+                                    <option value="Modern underground style with organic shapes, drip effects, and contemporary artistic expression">Modern underground style with organic shapes, drip effects, and contemporary artistic expression</option>
+                                </select>
+                                <button type="button" class="lock-btn" onclick="toggleLock('street_art_era')" title="Lock this field">UNLOCK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details open>
+                <summary>💡 Urban Lighting & Atmosphere</summary>
+                <div class="details-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Urban Lighting & Atmosphere</label>
+                            <div class="field-row">
+                                <select id="lighting_mood" data-logic="lighting" onchange="applyConditionalLogic(); updateFieldState(this);">
+                                    <option value="">None</option>
+                                    <option value="Daylight graffiti art with bold black outlines, colorful fill, gritty weathered wall texture">Daylight graffiti art with bold black outlines, colorful fill, gritty weathered wall texture</option>
+                                    <option value="Daylight graffiti text with bold colors, rough texture, authentic street art style">Daylight graffiti text with bold colors, rough texture, authentic street art style</option>
+                                    <option value="Daylight graffiti with bold outlines, colorful fill, authentic street culture aesthetic">Daylight graffiti with bold outlines, colorful fill, authentic street culture aesthetic</option>
+                                    <option value="Daylight graffiti with bold spray paint colors, rough weathered wall, authentic style">Daylight graffiti with bold spray paint colors, rough weathered wall, authentic style</option>
+                                    <option value="Daytime graffiti with natural sunlight, vibrant multi-color spray paint, concrete wall backdrop">Daytime graffiti with natural sunlight, vibrant multi-color spray paint, concrete wall backdrop</option>
+                                    <option value="Daytime street art with natural sunlight, colorful spray paint, weathered brick wall">Daytime street art with natural sunlight, colorful spray paint, weathered brick wall</option>
+                                    <option value="Daytime street art with natural sunlight, vibrant colors, textured concrete surface">Daytime street art with natural sunlight, vibrant colors, textured concrete surface</option>
+                                    <option value="Electric neon blue graffiti letters with dripping paint, dark night sky background">Electric neon blue graffiti letters with dripping paint, dark night sky background</option>
+                                    <option value="Electric neon graffiti text with glow effect, dark night sky, rebellion atmosphere">Electric neon graffiti text with glow effect, dark night sky, rebellion atmosphere</option>
+                                    <option value="Glowing neon green graffiti letters with atmospheric smoke, nighttime rebellion vibe">Glowing neon green graffiti letters with atmospheric smoke, nighttime rebellion vibe</option>
+                                    <option value="Glowing neon orange graffiti text on dark metal surface, nighttime street culture vibe">Glowing neon orange graffiti text on dark metal surface, nighttime street culture vibe</option>
+                                    <option value="Glowing neon yellow graffiti art with nighttime city lights in blurred background">Glowing neon yellow graffiti art with nighttime city lights in blurred background</option>
+                                    <option value="Harsh street lighting on white graffiti text, dramatic shadows, industrial grit atmosphere">Harsh street lighting on white graffiti text, dramatic shadows, industrial grit atmosphere</option>
+                                    <option value="Neon cyan and magenta graffiti with reflection on wet urban street at night">Neon cyan and magenta graffiti with reflection on wet urban street at night</option>
+                                    <option value="Neon cyan graffiti art with reflection on wet pavement, nighttime urban setting">Neon cyan graffiti art with reflection on wet pavement, nighttime urban setting</option>
+                                    <option value="Neon multi-color graffiti text, atmospheric haze, urban nighttime rebellion mood">Neon multi-color graffiti text, atmospheric haze, urban nighttime rebellion mood</option>
+                                    <option value="Neon pink and purple graffiti with cinematic lighting, nighttime city mood">Neon pink and purple graffiti with cinematic lighting, nighttime city mood</option>
+                                    <option value="Neon pink graffiti text with atmospheric fog, nighttime rebellion mood, cinematic lighting">Neon pink graffiti text with atmospheric fog, nighttime rebellion mood, cinematic lighting</option>
+                                    <option value="Neon purple and cyan graffiti text reflecting on wet pavement after rain, moody atmosphere">Neon purple and cyan graffiti text reflecting on wet pavement after rain, moody atmosphere</option>
+                                    <option value="Neon red and blue graffiti text reflecting in puddles, moody nighttime atmosphere">Neon red and blue graffiti text reflecting in puddles, moody nighttime atmosphere</option>
+                                    <option value="Neon-lit graffiti text glowing electric blue and pink against dark brick wall at night">Neon-lit graffiti text glowing electric blue and pink against dark brick wall at night</option>
+                                    <option value="Overhead street lighting on graffiti art, sharp contrasts, gritty urban industrial feel">Overhead street lighting on graffiti art, sharp contrasts, gritty urban industrial feel</option>
+                                    <option value="Street art lettering with harsh overhead lighting creating sharp shadows, industrial urban setting">Street art lettering with harsh overhead lighting creating sharp shadows, industrial urban setting</option>
+                                    <option value="Street lamp casting dramatic shadows across white spray-painted letters on urban concrete surface">Street lamp casting dramatic shadows across white spray-painted letters on urban concrete surface</option>
+                                    <option value="Street lamp illuminated graffiti art with long shadows, gritty urban decay aesthetic">Street lamp illuminated graffiti art with long shadows, gritty urban decay aesthetic</option>
+                                    <option value="Street lamp illuminated graffiti with dramatic shadows, urban decay aesthetic">Street lamp illuminated graffiti with dramatic shadows, urban decay aesthetic</option>
+                                    <option value="Street lamp shadows creating geometric patterns across graffiti letters on concrete">Street lamp shadows creating geometric patterns across graffiti letters on concrete</option>
+                                    <option value="Street lighting casting shadows on colorful graffiti letters, gritty industrial backdrop">Street lighting casting shadows on colorful graffiti letters, gritty industrial backdrop</option>
+                                    <option value="Vibrant graffiti text with neon green glow, dripping paint effect, nighttime city rebellion aesthetic">Vibrant graffiti text with neon green glow, dripping paint effect, nighttime city rebellion aesthetic</option>
+                                    <option value="Vibrant neon graffiti with electric glow effect, dark urban background, nighttime setting">Vibrant neon graffiti with electric glow effect, dark urban background, nighttime setting</option>
+                                </select>
+                                <button type="button" class="lock-btn" onclick="toggleLock('lighting_mood')" title="Lock this field">UNLOCK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details open>
+                <summary>✍️ Tag Artist Signature Style</summary>
+                <div class="details-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Tag Artist Signature Style</label>
+                            <div class="field-row">
+                                <select id="artist_signature" data-logic="standard" onchange="applyConditionalLogic(); updateFieldState(this);">
+                                    <option value="">None</option>
+                                    <option value="Crew graffiti style with geometric shapes, clean fills, and coordinated pastel color schemes">Crew graffiti style with geometric shapes, clean fills, and coordinated pastel color schemes</option>
+                                    <option value="Crew-style graffiti with geometric letter forms, clean fills, and coordinated color harmony">Crew-style graffiti with geometric letter forms, clean fills, and coordinated color harmony</option>
+                                    <option value="Crew-style piece featuring interconnected letters, arrow caps, and layered transparent paint effects">Crew-style piece featuring interconnected letters, arrow caps, and layered transparent paint effects</option>
+                                    <option value="Crew-style piece with geometric shapes, clean lines, and coordinated pastel color blocking">Crew-style piece with geometric shapes, clean lines, and coordinated pastel color blocking</option>
+                                    <option value="Professional crew-style piece with clean lines, intricate wildstyle letters, and coordinated color blocking">Professional crew-style piece with clean lines, intricate wildstyle letters, and coordinated color blocking</option>
+                                    <option value="Professional graffiti piece with interlocking wildstyle, 3D shadows, and chrome silver accents">Professional graffiti piece with interlocking wildstyle, 3D shadows, and chrome silver accents</option>
+                                    <option value="Professional graffiti writer signature with interlocking letters, 3D depth effects, and chrome finish">Professional graffiti writer signature with interlocking letters, 3D depth effects, and chrome finish</option>
+                                    <option value="Professional vandal tag with interlocking letters, arrow caps, and metallic gradient effects">Professional vandal tag with interlocking letters, arrow caps, and metallic gradient effects</option>
+                                    <option value="Professional wildstyle graffiti featuring intricate connections, 3D depth, and chrome finish">Professional wildstyle graffiti featuring intricate connections, 3D depth, and chrome finish</option>
+                                    <option value="Professional wildstyle graffiti with intricate letter connections, arrows, and metallic paint effects">Professional wildstyle graffiti with intricate letter connections, arrows, and metallic paint effects</option>
+                                    <option value="Raw graffiti aesthetic with aggressive drips, jagged edges, and high-contrast color combinations">Raw graffiti aesthetic with aggressive drips, jagged edges, and high-contrast color combinations</option>
+                                    <option value="Raw street art tag with paint drips, jagged angles, and vibrant neon highlights">Raw street art tag with paint drips, jagged angles, and vibrant neon highlights</option>
+                                    <option value="Raw tag art with dripping paint, jagged edges, and high-contrast black and neon colors">Raw tag art with dripping paint, jagged edges, and high-contrast black and neon colors</option>
+                                    <option value="Raw underground graffiti tag with aggressive spray paint drips, bold lettering, and chaotic energy">Raw underground graffiti tag with aggressive spray paint drips, bold lettering, and chaotic energy</option>
+                                    <option value="Raw vandal aesthetic with blocky letters, thick paint drips, and high-energy spray patterns">Raw vandal aesthetic with blocky letters, thick paint drips, and high-energy spray patterns</option>
+                                    <option value="Signature artist tag with flowing script letters, ornamental flourishes, and gradient color transitions">Signature artist tag with flowing script letters, ornamental flourishes, and gradient color transitions</option>
+                                    <option value="Signature graffiti with flowing letters, ornamental elements, and smooth color transitions">Signature graffiti with flowing letters, ornamental elements, and smooth color transitions</option>
+                                    <option value="Signature tag technique featuring elongated letters with sharp angles and metallic silver highlights">Signature tag technique featuring elongated letters with sharp angles and metallic silver highlights</option>
+                                    <option value="Signature tag technique with elongated letters, sharp points, and explosive paint splatters">Signature tag technique with elongated letters, sharp points, and explosive paint splatters</option>
+                                    <option value="Signature vandal tag with elongated script, sharp serifs, and explosive color gradients">Signature vandal tag with elongated script, sharp serifs, and explosive color gradients</option>
+                                    <option value="Street art tag with bubble letters, thick black outlines, and vibrant neon color bursts">Street art tag with bubble letters, thick black outlines, and vibrant neon color bursts</option>
+                                    <option value="Street art vandal aesthetic with bubble letters, thick outlines, and explosive paint splatter effects">Street art vandal aesthetic with bubble letters, thick outlines, and explosive paint splatter effects</option>
+                                    <option value="Street bombing aesthetic with bubble letters, bold outlines, and weathered wall texture">Street bombing aesthetic with bubble letters, bold outlines, and weathered wall texture</option>
+                                    <option value="Street bombing piece with bubble letters, thick outlines, and layered transparent paint">Street bombing piece with bubble letters, thick outlines, and layered transparent paint</option>
+                                    <option value="Underground bombing style featuring overlapping tags, stencil work, and weathered surface effects">Underground bombing style featuring overlapping tags, stencil work, and weathered surface effects</option>
+                                    <option value="Underground bombing style with overlapping tags, stencil elements, and gritty concrete texture backdrop">Underground bombing style with overlapping tags, stencil elements, and gritty concrete texture backdrop</option>
+                                    <option value="Underground bombing style with overlapping tags, stencil elements, and gritty texture backdrop">Underground bombing style with overlapping tags, stencil elements, and gritty texture backdrop</option>
+                                    <option value="Underground tag style featuring compressed script, sharp serifs, and explosive color gradients">Underground tag style featuring compressed script, sharp serifs, and explosive color gradients</option>
+                                    <option value="Underground tag technique featuring compressed letters, sharp angles, and dripping paint trails">Underground tag technique featuring compressed letters, sharp angles, and dripping paint trails</option>
+                                    <option value="Vandal aesthetic with blocky letters, thick outlines, and high-energy spray paint effects">Vandal aesthetic with blocky letters, thick outlines, and high-energy spray paint effects</option>
+                                </select>
+                                <button type="button" class="lock-btn" onclick="toggleLock('artist_signature')" title="Lock this field">UNLOCK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details open>
+                <summary>🌈 Color & Blend Technique</summary>
+                <div class="details-content">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Color & Blend Technique</label>
+                            <div class="field-row">
+                                <select id="color_blend" data-logic="standard" onchange="applyConditionalLogic(); updateFieldState(this);">
+                                    <option value="">None</option>
+                                    <option value="Bold primary colors red, blue, and yellow with white separation lines and stark contrast">Bold primary colors red, blue, and yellow with white separation lines and stark contrast</option>
+                                    <option value="Classic fade pattern transitioning from deep purple at top to light lavender at bottom">Classic fade pattern transitioning from deep purple at top to light lavender at bottom</option>
+                                    <option value="Cool gray monochrome with white highlights creating three-dimensional depth and volume">Cool gray monochrome with white highlights creating three-dimensional depth and volume</option>
+                                    <option value="Cool monochrome using only shades of blue from navy to sky blue with gradient transitions">Cool monochrome using only shades of blue from navy to sky blue with gradient transitions</option>
+                                    <option value="Dark teal base color with bright lime green highlights and orange accent strokes">Dark teal base color with bright lime green highlights and orange accent strokes</option>
+                                    <option value="Duotone style using only black and white with dramatic contrast and bold line work">Duotone style using only black and white with dramatic contrast and bold line work</option>
+                                    <option value="Earth tone palette combining terracotta, olive green, and chocolate brown with matte finish">Earth tone palette combining terracotta, olive green, and chocolate brown with matte finish</option>
+                                    <option value="High-contrast graffiti with bold red letters outlined in white with metallic silver accents">High-contrast graffiti with bold red letters outlined in white with metallic silver accents</option>
+                                    <option value="High-contrast monochrome black with white highlights and metallic silver accent details">High-contrast monochrome black with white highlights and metallic silver accent details</option>
+                                    <option value="High-saturation multi-color blend with sharp color blocking and clean geometric transitions">High-saturation multi-color blend with sharp color blocking and clean geometric transitions</option>
+                                    <option value="Iridescent color shift effect blending purple, green, and blue with holographic appearance">Iridescent color shift effect blending purple, green, and blue with holographic appearance</option>
+                                    <option value="Metallic gold and bronze blend with reflective highlights and subtle shadow layering technique">Metallic gold and bronze blend with reflective highlights and subtle shadow layering technique</option>
+                                    <option value="Monochrome black tag with sharp white outlines and subtle gray shadow effects for depth">Monochrome black tag with sharp white outlines and subtle gray shadow effects for depth</option>
+                                    <option value="Monochrome grayscale tag with intricate cross-hatching and dotwork texture throughout design">Monochrome grayscale tag with intricate cross-hatching and dotwork texture throughout design</option>
+                                    <option value="Monochrome silver and gray with metallic sheen and dimensional shadow layering technique">Monochrome silver and gray with metallic sheen and dimensional shadow layering technique</option>
+                                    <option value="Monochrome white on black with intricate detail work and fine line stippling technique">Monochrome white on black with intricate detail work and fine line stippling technique</option>
+                                    <option value="Muted pastel blend of dusty rose, sage green, and soft blue with gentle gradients">Muted pastel blend of dusty rose, sage green, and soft blue with gentle gradients</option>
+                                    <option value="Neon color palette combining bright purple, cyan, and hot pink with glowing edges">Neon color palette combining bright purple, cyan, and hot pink with glowing edges</option>
+                                    <option value="Neon green letters with electric blue shadow and pink highlight accents on dark background">Neon green letters with electric blue shadow and pink highlight accents on dark background</option>
+                                    <option value="Neon highlight technique with bright cyan letters on dark navy background with glow effect">Neon highlight technique with bright cyan letters on dark navy background with glow effect</option>
+                                    <option value="Neon pink and purple gradient with glowing outline effect and subtle sparkle highlights">Neon pink and purple gradient with glowing outline effect and subtle sparkle highlights</option>
+                                    <option value="Rainbow spectrum fade pattern flowing horizontally across all letters with smooth color transitions">Rainbow spectrum fade pattern flowing horizontally across all letters with smooth color transitions</option>
+                                    <option value="Soft pastel gradient blend combining mint green, peachy pink, and cream with feathered edges">Soft pastel gradient blend combining mint green, peachy pink, and cream with feathered edges</option>
+                                    <option value="Soft watercolor blend using coral, peach, and cream with diffused feathered edges throughout">Soft watercolor blend using coral, peach, and cream with diffused feathered edges throughout</option>
+                                    <option value="Sunset gradient fade from deep orange through red to purple with atmospheric blur">Sunset gradient fade from deep orange through red to purple with atmospheric blur</option>
+                                    <option value="Vibrant lime green base with hot pink outline and neon yellow inner glow effect">Vibrant lime green base with hot pink outline and neon yellow inner glow effect</option>
+                                    <option value="Vibrant multi-layer blend using electric blue, hot pink, and neon yellow with smooth transitions">Vibrant multi-layer blend using electric blue, hot pink, and neon yellow with smooth transitions</option>
+                                    <option value="Vibrant tri-color blend of magenta, cyan, and yellow with overlapping transparency effects">Vibrant tri-color blend of magenta, cyan, and yellow with overlapping transparency effects</option>
+                                    <option value="Warm color palette blending burnt orange, deep red, and golden yellow with soft edges">Warm color palette blending burnt orange, deep red, and golden yellow with soft edges</option>
+                                    <option value="Warm gradient fade from crimson red through orange to golden yellow with smooth transitions">Warm gradient fade from crimson red through orange to golden yellow with smooth transitions</option>
+                                </select>
+                                <button type="button" class="lock-btn" onclick="toggleLock('color_blend')" title="Lock this field">UNLOCK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <div class="custom-section">
+                <h3 style="color: var(--accent); margin-bottom: 16px; font-size: 1.1em;">✍️ Custom Details (Optional)</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Custom Creative Direction</label>
+                        <input type="text" id="custom_creative" class="custom-input"
+                            placeholder="e.g., luxury streetwear energy, bold campaign mood, royal blue and gold graffiti wall..."
+                            oninput="this.style.borderColor = this.value ? 'var(--accent)' : 'var(--border-color)';">
+                    </div>
+                    <div class="form-group">
+                        <label>Must-Have Elements</label>
+                        <input type="text" id="custom_elements" class="custom-input"
+                            placeholder="e.g., brand name, chrome edges, gold accents, paint drips, upscale urban vibe..."
+                            oninput="this.style.borderColor = this.value ? 'var(--accent)' : 'var(--border-color)';">
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-bar">
+                <button onclick="generatePrompt()">Generate Prompt</button>
+                <button onclick="randomizeForm()">🎲 Randomize (Unlocked)</button>
+                <button onclick="copyPrompt(event)">Copy</button>
+                <button onclick="clearAll()">Clear All</button>
+            </div>
+
+            <textarea id="output" placeholder="Your professional prompt will appear here..." readonly></textarea>
+            <div class="status-line">
+                <span id="lengthStatus">0 words · 0 characters</span>
+                <span id="trimWarning" class="warning hidden">⚠️ Prompt optimized for output limits</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            page_title: "Graffiti Street Art Text Generator | Urban Clothing & Hip-Hop Brand Design Tool",
+            hero_title: "Generate Raw Graffiti Text Art for Your Brand",
+            hero_subtitle: "Bold graffiti vibes with Glam energy, royal blue confidence, and gold-level shine",
+            is_portrait: false,
+            model_used: "claude-haiku-4-5-20251001"
+        };
+
+        function getValue(id) {
+            const element = document.getElementById(id);
+            return element ? element.value : '';
+        }
+
+        function getAllSelects() {
+            return document.querySelectorAll('select');
+        }
+
+        function updateFieldState(select) {
+            if (select.value && select.value !== 'none' && select.value !== '' && select.value.toLowerCase() !== 'none') {
+                select.classList.add('has-value');
+            } else {
+                select.classList.remove('has-value');
+            }
+        }
+
+        function enforcePromptLimit(text) {
+            const words = text.trim().split(/\s+/).filter(Boolean);
+            let trimmed = false;
+
+            if (words.length > 280) {
+                text = words.slice(0, 280).join(' ');
+                trimmed = true;
+            }
+
+            if (text.length > 1990) {
+                text = text.slice(0, 1990);
+                trimmed = true;
+            }
+
+            document.getElementById('trimWarning').classList.toggle('hidden', !trimmed);
+            return text;
+        }
+
+        function updateLengthStatus(text) {
+            const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+            const chars = text.length;
+            document.getElementById('lengthStatus').textContent = `${words} words · ${chars} characters`;
+        }
+
+        function applyConditionalLogic() {
+            const genderSelect = document.getElementById('gender_control');
+            const ageSelect = document.getElementById('age_control');
+
+            if (!genderSelect || !ageSelect) return;
+
+            const gender = genderSelect.value.toLowerCase();
+            const ageText = ageSelect.value.toLowerCase();
+
+            let ageNumber = 18;
+            if (ageText.includes('child') || ageText.includes('4-9')) ageNumber = 7;
+            else if (ageText.includes('pre-teen') || ageText.includes('10-13')) ageNumber = 12;
+            else if (ageText.includes('teenager') || ageText.includes('14-19')) ageNumber = 16;
+            else if (ageText.includes('young adult') || ageText.includes('20-29')) ageNumber = 25;
+
+            document.querySelectorAll('select[data-logic="beard"]').forEach(beardSelect => {
+                const wrapper = beardSelect.closest('details');
+                if (ageNumber < 14) {
+                    wrapper.classList.add('hidden');
+                    beardSelect.value = '';
+                } else {
+                    wrapper.classList.remove('hidden');
+                }
+            });
+
+            ['hair', 'clothing'].forEach(logicType => {
+                document.querySelectorAll(`select[data-logic="${logicType}"]`).forEach(select => {
+                    Array.from(select.options).forEach(option => {
+                        const text = option.textContent.toLowerCase();
+                        let shouldHide = false;
+
+                        if (gender === 'male' && text.includes('(female)')) shouldHide = true;
+                        if (gender === 'female' && text.includes('(male)')) shouldHide = true;
+
+                        option.hidden = shouldHide;
+                        if (shouldHide && option.selected) {
+                            select.value = '';
+                            updateFieldState(select);
+                        }
+                    });
+                });
+            });
+
+            if (gender === 'female') {
+                document.querySelectorAll('select[data-logic="beard"]').forEach(beardSelect => {
+                    const wrapper = beardSelect.closest('details');
+                    wrapper.classList.add('hidden');
+                    beardSelect.value = '';
+                });
+            } else if (gender === 'male' && ageNumber >= 14) {
+                document.querySelectorAll('select[data-logic="beard"]').forEach(beardSelect => {
+                    const wrapper = beardSelect.closest('details');
+                    wrapper.classList.remove('hidden');
+                });
+            }
+        }
+
+        const lockedFields = new Set();
+
+        function toggleLock(fieldId) {
+            const button = document.querySelector(`button[onclick="toggleLock('${fieldId}')"]`);
+
+            if (lockedFields.has(fieldId)) {
+                lockedFields.delete(fieldId);
+                button.textContent = 'UNLOCK';
+                button.classList.remove('locked');
+                button.title = 'Lock this field';
+            } else {
+                lockedFields.add(fieldId);
+                button.textContent = 'LOCKED';
+                button.classList.add('locked');
+                button.title = 'Unlock this field';
+            }
+        }
+
+        function generatePrompt() {
+            const values = {};
+
+            getAllSelects().forEach(select => {
+                if (
+                    select.value &&
+                    select.value.toLowerCase() !== 'none' &&
+                    select.value !== '' &&
+                    !select.closest('details').classList.contains('hidden')
+                ) {
+                    const label = select.closest('.form-group').querySelector('label').textContent.trim();
+                    values[label] = select.value;
+                }
+            });
+
+            const customCreative = document.getElementById('custom_creative').value.trim();
+            if (customCreative) {
+                values['Creative Direction'] = customCreative;
+            }
+
+            const customElements = document.getElementById('custom_elements').value.trim();
+            if (customElements) {
+                values['Must-Have Elements'] = customElements;
+            }
+
+            if (Object.keys(values).length === 0) {
+                alert('Please select at least one option before generating!');
+                return;
+            }
+
+            let promptSections = [];
+
+            let subject = "Professional graffiti street art text design for a bold luxury brand, high-impact urban visual identity, premium creative direction";
+            promptSections.push(`Subject & Identity\n${subject}`);
+
+            for (const [category, value] of Object.entries(values)) {
+                promptSections.push(`${category}\n${value}`);
+            }
+
+            promptSections.push("Rendering & Quality\nhyperrealistic, 8k resolution, professional quality, award-winning photography, gallery quality");
+            promptSections.push("Technical Tags\n--ar 2:3 --v 6.1 --style raw --s 600");
+
+            let fullPrompt = promptSections.join('\n\n');
+            fullPrompt = enforcePromptLimit(fullPrompt);
+
+            document.getElementById('output').value = fullPrompt;
+            updateLengthStatus(fullPrompt);
+        }
+
+        function randomizeForm() {
+            getAllSelects().forEach(select => {
+                if (lockedFields.has(select.id)) return;
+
+                const visibleOptions = Array.from(select.options).filter(opt =>
+                    opt.value !== '' && opt.value.toLowerCase() !== 'none' && !opt.hidden
+                );
+
+                if (visibleOptions.length > 0 && !select.closest('details').classList.contains('hidden')) {
+                    if (Math.random() < 0.7) {
+                        const commercialRange = Math.min(visibleOptions.length, Math.max(1, Math.floor(visibleOptions.length * 0.6)));
+                        const randomIndex = Math.floor(Math.random() * commercialRange);
+                        select.value = visibleOptions[randomIndex].value;
+                    } else {
+                        const randomOption = visibleOptions[Math.floor(Math.random() * visibleOptions.length)];
+                        select.value = randomOption.value;
+                    }
+                    updateFieldState(select);
+                }
+            });
+
+            generatePrompt();
+        }
+
+        function copyPrompt(event) {
+            const output = document.getElementById('output');
+            if (output.value.trim()) {
+                output.select();
+                document.execCommand('copy');
+
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = 'COPIED!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            } else {
+                alert('Generate a prompt first!');
+            }
+        }
+
+        function clearAll() {
+            getAllSelects().forEach(select => {
+                select.selectedIndex = 0;
+                select.classList.remove('has-value');
+            });
+
+            document.getElementById('custom_creative').value = '';
+            document.getElementById('custom_elements').value = '';
+            document.querySelectorAll('.custom-input').forEach(input => {
+                input.style.borderColor = 'var(--border-color)';
+            });
+
+            document.getElementById('output').value = '';
+            updateLengthStatus('');
+            document.getElementById('trimWarning').classList.add('hidden');
+
+            lockedFields.clear();
+            document.querySelectorAll('.lock-btn').forEach(btn => {
+                btn.textContent = 'UNLOCK';
+                btn.classList.remove('locked');
+                btn.title = 'Lock this field';
+            });
+
+            document.querySelectorAll('.hidden').forEach(el => {
+                el.classList.remove('hidden');
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLengthStatus('');
+            setTimeout(applyConditionalLogic, 100);
+        });
+    </script>
+</body>
+</html>
